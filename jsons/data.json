@@ -1,0 +1,22 @@
+{
+  "input": {
+    "test1": "1 \n2 3 4\n3 \n4",
+    "test2": "2",
+    "test3": "3"
+  },
+  "expected": {
+    "test1": "12",
+    "test2": "7",
+    "test3": "0"
+  },
+  "got": {
+    "test1": "5",
+    "test2": "8",
+    "test3": "-2"
+  },
+  "is_same": {
+    "test1": "true",
+    "test2": "true",
+    "test3": "true"
+  }
+}
