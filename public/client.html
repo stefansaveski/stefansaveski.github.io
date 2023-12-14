@@ -19,8 +19,8 @@
       src="https://kit.fontawesome.com/9c04498f1b.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="icon" href="images/b2b.png" />
-
+    <link rel="icon" href="../images/b2b.png" />
+    <script src="../sendcode.js"></script>
     <style>
       .kopce {
         background-color: #780116;
@@ -64,6 +64,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  id="firstName"
                   placeholder="Име"
                   style="height: 4rem; font-size: 2rem"
                 />
@@ -71,6 +72,7 @@
               <div class="col">
                 <input
                   type="text"
+                  id="lastName"
                   class="form-control"
                   placeholder="Презиме"
                   style="height: 4rem; font-size: 2rem"
@@ -81,6 +83,7 @@
               <div class="col d-flex justify-content-center mt-3">
                 <input
                   type="text"
+                  id="indexNumber"
                   class="form-control w-50"
                   placeholder="Број на индекс"
                   style="height: 4rem; font-size: 2rem"
@@ -90,7 +93,7 @@
           </form>
         </div>
         <div class="container d-flex justify-content-center mt-5">
-          <button class="kopce" onclick= " "><a href="../problems/zadaca.html" style="text-decoration: none; color: white;">Start Quiz</a></button>
+          <button class="kopce" onclick= "sendData()"><a href="../problems/zadaca.html" style="text-decoration: none; color: white;">Start Quiz</a></button>
         </div>
       </div>
     </div>
