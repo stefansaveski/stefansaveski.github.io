@@ -20,10 +20,11 @@ app.post('/saveuser', (req, res) => {
     if (!userData.index) {
         return res.status(400).send('Missing "index" property in the request.');
     }
-
+    firstName = userData.firstName;
+    lastName = userData.lastName;
     previousIndex = userData.index; // Store the index for later use
 
-    const filename = `${userData.index}.json`;
+    const filename = `users/${userData.index}.json`;
 
     // Save the JSON data to a file with the index as the filename
     fs.writeFileSync(filename, JSON.stringify(userData, null, 2));
@@ -33,16 +34,21 @@ app.post('/saveuser', (req, res) => {
 
 app.post('/savedata', (req, res) => {
     const jsonData = req.body;
-
+    var inputData = {
+        firstName: firstName,
+        lastName: lastName,
+        index: previousIndex,
+        input: jsonData.input
+    }
     // Check if previousIndex is set
     if (!previousIndex) {
         return res.status(400).send('No previous index value available.');
     }
 
-    const filename = `${previousIndex}Input.json`;
+    const filename = `users/${previousIndex}Input.json`;
 
     // Save the JSON data to a file with the specified filename
-    fs.writeFileSync(filename, JSON.stringify(jsonData, null, 2));
+    fs.writeFileSync(filename, JSON.stringify(inputData, null, 2));
 
     res.send(`Data saved to file: ${filename}`);
 });

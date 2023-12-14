@@ -7,7 +7,7 @@ async function sendData() {
     indexNumber = document.getElementById("indexNumber").value;
 
     var userData = {
-        name: firstName,
+        firstName: firstName,
         lastName: lastName,
         index: indexNumber
     };
