@@ -11,14 +11,40 @@ app.use(bodyParser.json());
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/save', (req, res) => {
+let previousIndex; // Variable to store the index value
+
+app.post('/saveuser', (req, res) => {
+    const userData = req.body;
+
+    // Check if userData has the "index" property
+    if (!userData.index) {
+        return res.status(400).send('Missing "index" property in the request.');
+    }
+
+    previousIndex = userData.index; // Store the index for later use
+
+    const filename = `${userData.index}.json`;
+
+    // Save the JSON data to a file with the index as the filename
+    fs.writeFileSync(filename, JSON.stringify(userData, null, 2));
+
+    res.send(`Data saved to file: ${filename}`);
+});
+
+app.post('/savedata', (req, res) => {
     const jsonData = req.body;
-    const name = req.index;
 
-    // Save the JSON data to a file
-    fs.writeFileSync('savedData.json', JSON.stringify(jsonData, null, 2));
+    // Check if previousIndex is set
+    if (!previousIndex) {
+        return res.status(400).send('No previous index value available.');
+    }
 
-    res.send('Data saved on the server.');
+    const filename = `${previousIndex}Input.json`;
+
+    // Save the JSON data to a file with the specified filename
+    fs.writeFileSync(filename, JSON.stringify(jsonData, null, 2));
+
+    res.send(`Data saved to file: ${filename}`);
 });
 
 // Serve client.html directly

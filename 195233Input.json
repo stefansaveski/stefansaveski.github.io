@@ -1,0 +1,3 @@
+{
+  "input": "#include <iostream>\\n\\nusing namespace std;\\n\\nint main()\\n{\\n    cout<<\"Hello World\";\\n\\n    return 0;\\n}"
+}

@@ -1,13 +1,24 @@
 var firstName;
 var lastName;
 var indexNumber;
-function sendData() {
+async function sendData() {
     firstName = document.getElementById("firstName").value;
     lastName = document.getElementById("lastName").value;
     indexNumber = document.getElementById("indexNumber").value;
 
-    var userData = `${firstName}${lastName}`;
+    var userData = {
+        name: firstName,
+        lastName: lastName,
+        index: indexNumber
+    };
     console.log(userData);
+    await fetch('/saveuser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+    });
 }
 async function saveToJson() {
     // Get the textarea element by its ID
@@ -18,14 +29,11 @@ async function saveToJson() {
     console.log("firstName");
     // Replace newlines with \n
     var jsonData = {
-        name: "firstName",
-        lastName: lastName,
-        index: indexNumber,
         input: textareaContent.replace(/\n/g, "\\n")
     };
 
     // Send the data to the server
-    await fetch('/save', {
+    await fetch('/savedata', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
