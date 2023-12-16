@@ -1,0 +1,6 @@
+{
+  "firstName": "Viktor",
+  "lastName": "Petreski",
+  "index": "143-05",
+  "input": "#include <iostream>\\n\\nusing namespace std;\\n\\nint main()\\n{\\n    cout<<\"Hello World\";\\n\\n    return 0;\\n}"
+}

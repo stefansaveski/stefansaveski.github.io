@@ -12,12 +12,11 @@ async function fetchData() {
 async function displayDataInTable() {
   try {
     const jsonData = await fetchData();
-    var location = document.getElementById("table");
 
     // Create a table dynamically
     var table = document.createElement("table");
     table.style.borderCollapse = "collapse"; // Add this line to collapse borders
-   
+    var location = document.getElementById("results");
     // Add header row
     var headerRow = table.insertRow();
     ["Input", "Expected", "Got"].forEach((header) => {
